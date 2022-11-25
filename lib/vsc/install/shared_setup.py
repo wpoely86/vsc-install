@@ -1525,8 +1525,6 @@ class vsc_setup(object):
                 tests_requires.extend([
                     'flake8 < 5.0.0',
                     'astroid <= 2.12.0-dev0',
-                    'pyflakes < 3.0.0',
-                    'pycodestyle < 2.9.0',
                     'pylint~=2.14.4',
                     'prospector~=1.7.7',
                 ])
