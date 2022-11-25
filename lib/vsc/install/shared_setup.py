@@ -1523,6 +1523,7 @@ class vsc_setup(object):
                 ])
             else:  # tested for fedora36 py3.10
                 tests_requires.extend([
+                    'flake8 < 5.0.0',
                     'astroid <= 2.12.0-dev0',
                     'pyflakes < 3.0.0',
                     'pycodestyle < 2.9.0',
