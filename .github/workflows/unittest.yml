@@ -19,5 +19,12 @@ jobs:
       - name: add mandatory git remote
         # 'hpcugent' is a mandatory remote for setup.py to work (because of get_name_url)
         run: git remote add hpcugent https://github.com/hpcugent/vsc-base.git
+      - name: some tests
+        run: |
+          pwd
+          which python
+          ls -alh
+          ls -alh *
+          ls -alh ../*
       - name: run test
         run: python setup.py test -v
