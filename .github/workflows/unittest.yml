@@ -18,13 +18,8 @@ jobs:
         run: pip install tox wheel
       - name: add mandatory git remote
         # 'hpcugent' is a mandatory remote for setup.py to work (because of get_name_url)
-        run: git remote add hpcugent https://github.com/hpcugent/vsc-base.git
-      - name: some tests
-        run: |
-          pwd
-          which python
-          ls -alh
-          ls -alh *
-          ls -alh ../*
+        run: git remote add hpcugent https://github.com/hpcugent/vsc-install.git
       - name: run test
         run: python setup.py test -v
+      - name: run test 2
+        run: tox -e py -v
