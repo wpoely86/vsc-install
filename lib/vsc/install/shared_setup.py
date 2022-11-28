@@ -1507,7 +1507,7 @@ class vsc_setup(object):
             tests_requires.extend([
                 'mock',
             ])
-            if sys.version_info < (3, 9):
+            if sys.version_info < (3, 7):
                 tests_requires.extend([
                     'pyflakes~=2.3.0',
                     'pycodestyle~=2.7.0',
