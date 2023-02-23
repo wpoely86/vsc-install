@@ -3,7 +3,7 @@ on: [push, pull_request]
 
 jobs:
   python_unittests:
-      runs-on: ubuntu-latest
+      runs-on: ubuntu-20.04
       container: rockylinux:8
       strategy:
         matrix:
