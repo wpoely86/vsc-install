@@ -17,10 +17,11 @@ jobs:
           python-version: ${{ matrix.python }}
       - name: test py
         run: |
-          which -a python
           echo $PATH
           ls
           pwd
+          type -a python
+          type -a python3
       - name: install tox
         run: pip install tox
       - name: add mandatory git remote
