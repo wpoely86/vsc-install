@@ -104,6 +104,7 @@ if log.Log.__name__ != 'NewLog':
         """Logging class to prefix the message with a human readable log level"""
 
         def __init__(self, *args, **kwargs):
+            """init function"""
             self._orig_log = OrigLog._log
             # make copy
             self._log_levels = {}
@@ -167,7 +168,7 @@ URL_GHUGENT_HPCUGENT = 'https://github.ugent.be/hpcugent/%(name)s'
 
 RELOAD_VSC_MODS = False
 
-VERSION = '0.18.5'
+VERSION = '0.18.6'
 
 log.info('This is (based on) vsc.install.shared_setup %s' % VERSION)
 log.info('(using setuptools version %s located at %s)' % (setuptools.__version__, setuptools.__file__))
