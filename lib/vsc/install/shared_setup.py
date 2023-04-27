@@ -149,6 +149,7 @@ GIT_REMOTES = [
     ('github.ugent.be', 'hpcugent'),
     ('github.com', 'hpcugent'),
     ('github.com', 'vub-hpc'),
+    ('github.com', 'wpoely86'),
     ('dev.azure.com', 'VUB-ICT'),
 ]
 
