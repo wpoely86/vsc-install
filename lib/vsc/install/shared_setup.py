@@ -167,7 +167,7 @@ URL_GHUGENT_HPCUGENT = 'https://github.ugent.be/hpcugent/%(name)s'
 
 RELOAD_VSC_MODS = False
 
-VERSION = '0.18.8'
+VERSION = '0.18.9'
 
 log.info('This is (based on) vsc.install.shared_setup %s' % VERSION)
 log.info('(using setuptools version %s located at %s)' % (setuptools.__version__, setuptools.__file__))
@@ -1242,8 +1242,8 @@ class vsc_setup(object):
         """
         Transforms name into a sensible string for use in setup.cfg.
 
-        environment variable VSC_RPM_PYTHON is set to 1,2 or 3 and either
-            name starts with key from PYTHON_BDIST_RPM_PREFIX_MAP
+        environment variable VSC_RPM_PYTHON is set to 1, 2, 3 or a specific python version (like 39) and
+            either name starts with key from PYTHON_BDIST_RPM_PREFIX_MAP
                 new name starts with value
             python- is prefixed in case of
                 name is not in hardcoded list NO_PREFIX_PYTHON_BDIST_RPM
@@ -1262,8 +1262,8 @@ class vsc_setup(object):
             klass = _fvs('sanitize')
             return "\n    ".join([klass.sanitize(r) for r in name])
         else:
-            pyversuff = os.environ.get(VSC_RPM_PYTHON, None)
-            if pyversuff in ("1", "2", "3"):
+            pyversuff = os.environ.get(VSC_RPM_PYTHON, '')
+            if pyversuff in ("1", "2") or pyversuff.startswith("3"):
                 # enable VSC-style naming for Python packages: use 'python2-*' or 'python3-*',
                 # unless '1' is used as value for $VSC_RPM_PYTHON, then use 'python-*' for legacy behaviour
                 if pyversuff == '1':
@@ -1278,11 +1278,11 @@ class vsc_setup(object):
 
                 # more sensible map
                 is_python_pkg = (not ([x for x in NO_PREFIX_PYTHON_BDIST_RPM if name.startswith(x)] or
-                                      name.startswith('python-') or name.startswith('python%s-' % pyversuff))
+                                      name.startswith('python-') or name.startswith(f'python{pyversuff}-'))
                                  or name.startswith('vsc'))
 
                 if is_python_pkg:
-                    newname = fix_range('python%s-%s' % (pyversuff, name))
+                    newname = fix_range(f'python{pyversuff}-{name}')
                     log.debug("new sanitized name %s (old %s)", newname, name)
                     return newname
 
